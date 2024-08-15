@@ -1,0 +1,45 @@
+logging:
+  level:
+    org:
+      springframework:
+        security: info
+        web: info
+spring:
+  datasource:
+    username: sa
+    url: jdbc:h2:mem:sampledb
+    driverClassName: org.h2.Driver
+    password: ''
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: false
+        trace: false
+      path: /h2-console
+  application:
+    name: parcelcostcalculator
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+
+gcash:
+  parcel:
+    url: https://mynt-exam.mocklab.io/voucher
+#    url: http://localhost:8081/voucher #localhost since the MYNT's voucher API always returns a Gateway Timeout
+    voucherApi: /%s?key=apikey
+    reject:
+      limit: 50
+      multiplier: "N/A"
+    heavy:
+      limit: 10
+      multiplier: 20
+    small:
+      limit: 1500
+      multiplier: 0.03
+    medium:
+      limit: 2500
+      multiplier: 0.04
+    large:
+      limit: 50
+      multiplier: 0.05
+
